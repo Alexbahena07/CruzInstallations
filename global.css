@@ -118,12 +118,14 @@ nav {
   background-repeat: no-repeat;
   color: #ffffff;
   text-align: center;
-  min-height: 100vh;
+  height: calc(100vh - 56px);
+  min-height: 480px;
   display: flex;
   align-items: center;
   justify-content: center;
   padding: 40px 24px;
   position: relative;
+  overflow: hidden;
 }
 
 #hero::before {
