@@ -366,7 +366,7 @@ nav {
   color: #555555;
 }
 
-/* ─── Project Gallery ─── */
+/* ─── Project Carousel ─── */
 .gallery-heading {
   font-size: 1.3rem;
   font-weight: 700;
@@ -377,29 +377,47 @@ nav {
   border-bottom: 2px solid #7A0C15;
 }
 
-.gallery-grid {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 12px;
+.carousel {
+  overflow: hidden;
+  width: 100%;
+  border-radius: 6px;
 }
 
-.gallery-item {
-  overflow: hidden;
+.carousel-track {
+  display: flex;
+  gap: 14px;
+  width: max-content;
+  animation: carousel-scroll 32s linear infinite;
+}
+
+.carousel:hover .carousel-track {
+  animation-play-state: paused;
+}
+
+.carousel-item {
+  flex-shrink: 0;
+  width: 340px;
+  height: 255px;
   border-radius: 4px;
-  aspect-ratio: 4 / 3;
+  overflow: hidden;
   background-color: #e0e0e0;
 }
 
-.gallery-item img {
+.carousel-item img {
   width: 100%;
   height: 100%;
   object-fit: cover;
   display: block;
-  transition: transform 0.3s ease;
+  transition: transform 0.4s ease;
 }
 
-.gallery-item:hover img {
-  transform: scale(1.04);
+.carousel-item:hover img {
+  transform: scale(1.05);
+}
+
+@keyframes carousel-scroll {
+  0%   { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
 }
 
 /* ─── Where We Work ─── */
@@ -421,6 +439,7 @@ nav {
   display: flex;
   align-items: flex-start;
   gap: 10px;
+  margin-bottom: 28px;
 }
 
 .location-icon {
@@ -428,6 +447,14 @@ nav {
   font-size: 1.1rem;
   margin-top: 3px;
   flex-shrink: 0;
+}
+
+.map-wrapper {
+  border-radius: 6px;
+  overflow: hidden;
+  border: 2px solid #e0e0e0;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1);
+  line-height: 0;
 }
 
 /* ─── Contact ─── */
@@ -589,8 +616,9 @@ footer {
     margin-bottom: 24px;
   }
 
-  .gallery-grid {
-    grid-template-columns: repeat(2, 1fr);
+  .carousel-item {
+    width: 260px;
+    height: 195px;
   }
 }
 
@@ -619,8 +647,9 @@ footer {
     grid-template-columns: 1fr;
   }
 
-  .gallery-grid {
-    grid-template-columns: 1fr;
+  .carousel-item {
+    width: 220px;
+    height: 165px;
   }
 
   .service-card {
